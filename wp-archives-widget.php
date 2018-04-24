@@ -84,7 +84,7 @@ class wp_archives_widget extends WP_Widget {
 		 */
 		$join = apply_filters( 'getarchives_join', '' );
 
-		if ( $months = $wpdb->get_results( "SELECT YEAR(post_date) AS year, MONTH(post_date) AS numMonth, DATE_FORMAT(post_date, '%M') AS month, count(ID) as post_count FROM $wpdb->posts $join $where GROUP BY YEAR(post_date), MONTH(post_date) ORDER BY post_date DESC" ) ) {
+		if ( $months = $wpdb->get_results( "SELECT YEAR(post_date) AS year, MONTH(post_date) AS numMonth, count(ID) as post_count FROM $wpdb->posts $join $where GROUP BY YEAR(post_date), MONTH(post_date) ORDER BY post_date DESC" ) ) {
 			echo '<ul>';
 			foreach ( $months as $month ) {
 				$currentYear = $month->year;
@@ -99,7 +99,7 @@ class wp_archives_widget extends WP_Widget {
 					<?php
 				} ?>
 				<li class="wp-archives-widget-month">
-					<a href="<?php echo esc_url( get_month_link( $month->year, $month->numMonth ) ); ?>"><?php echo esc_html( $month->month . ' ' . $month->year ); ?></a>
+					<a href="<?php echo esc_url( get_month_link( $month->year, $month->numMonth ) ); ?>"><?php echo esc_html( $month->year.'/'.$month->numMonth ); ?></a>(<?php echo $month->post_count; ?>)
 				</li>
 				<?php
 				$prevYear = $month->year;
