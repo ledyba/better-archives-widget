@@ -85,11 +85,11 @@ class wp_archives_widget extends WP_Widget {
 		$join = apply_filters( 'getarchives_join', '' );
 		?>
 		<style>
-		li.wp-archives-widget-year {
+		.widget ul li.wp-archives-widget-year {
 			border: none;
 			border-bottom: none;
 		}
-		li.wp-archives-widget-month {
+		.widget ul li.wp-archives-widget-month {
 			border: none;
 			border-bottom: none;
 		}
