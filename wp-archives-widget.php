@@ -83,8 +83,18 @@ class wp_archives_widget extends WP_Widget {
 		 * Filter the SQL JOIN clause for retrieving archives.
 		 */
 		$join = apply_filters( 'getarchives_join', '' );
+		?>
+		<style>
+		.wp-archives-widget-year {
+			border: none;
+		}
+		.wp-archives-widget-month {
+			border: none;
+		}
+		</style>
+		<?php
 
-		if ( $months = $wpdb->get_results( "SELECT YEAR(post_date) AS year, MONTH(post_date) AS numMonth, DATE_FORMAT(post_date, '%Y%m') AS date_string, count(ID) as post_count FROM $wpdb->posts $join $where GROUP BY YEAR(post_date), MONTH(post_date) ORDER BY post_date DESC" ) ) {
+		if ( $months = $wpdb->get_results( "SELECT YEAR(post_date) AS year, MONTH(post_date) AS numMonth, DATE_FORMAT(post_date, '%Y/%m') AS date_string, count(ID) as post_count FROM $wpdb->posts $join $where GROUP BY YEAR(post_date), MONTH(post_date) ORDER BY post_date DESC" ) ) {
 			echo '<ul>';
 			$postsInYear = array();
 			foreach ( $months as $month ) {
