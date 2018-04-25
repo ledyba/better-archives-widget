@@ -129,7 +129,7 @@ class wp_archives_widget extends WP_Widget {
 				if ( $currentYear !== $prevYear ) {
 					?>
 					<li class="wp-archives-widget-year">
-					<span class="toggle">▶︎</span>
+					<span class="toggle">➡️</span>
 					<a href="<?php echo esc_url( get_year_link( $month->year ) ); ?>"><?php echo esc_html( $month->year.'('.$postsInYear[$month->year].')' ); ?></a>
 					<ul class="wp-archives-widget-months hidden">
 					<?php
