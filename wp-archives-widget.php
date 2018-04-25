@@ -105,9 +105,9 @@ class wp_archives_widget extends WP_Widget {
 				var list = it.querySelector('ul');
 				btn.addEventListener('click', function() {
 					if(list.classList.toggle('hidden')) {
-						it.textContent='▶︎';
+						btn.textContent='▶️';
 					}else{
-						it.textContent='▼';
+						btn.textContent='⬇️';
 					}
 				});
 			});
