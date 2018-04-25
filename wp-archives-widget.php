@@ -85,6 +85,9 @@ class wp_archives_widget extends WP_Widget {
 		$join = apply_filters( 'getarchives_join', '' );
 		?>
 		<style>
+		ul.wp-archives-widget-years {
+			list-style-type: none;
+		}
 		.wp-archives-widget-years li {
 			border: none;
 		}
@@ -92,10 +95,10 @@ class wp_archives_widget extends WP_Widget {
 			cursor: pointer;
 		}
 		.wp-archives-widget-years .wp-archives-widget-months.hidden {
-			visibility: none;
+			display: none;
 		}
 		.wp-archives-widget-years .widget ul.wp-archives-widget-months {
-			visibility: block;
+			display: block;
 		}
 		</style>
 		<script>
