@@ -88,6 +88,9 @@ class wp_archives_widget extends WP_Widget {
 		.widget .wp-archives-widget-years li {
 			border: none;
 		}
+		.widget .wp-archives-widget-years .toggle {
+			cursor: pointer;
+		}
 		.widget ul.wp-archives-widget-months.hidden {
 			visibility: none;
 		}
@@ -97,9 +100,10 @@ class wp_archives_widget extends WP_Widget {
 		</style>
 		<script>
 		document.addEventListener("DOMContentLoaded", function(event) {
-			document.querySelectorAll('.widget ul li.wp-archives-widget-year > .toggle').forEach(function(it) {
+			document.querySelectorAll('.widget .wp-archives-widget-year').forEach(function(it) {
+				var btn = it.querySelector('.toggle');
 				var list = it.querySelector('ul');
-				it.addEventListener('click', function() {
+				btn.addEventListener('click', function() {
 					if(list.classList.toggle('hidden')) {
 						it.textContent='▶︎';
 					}else{
