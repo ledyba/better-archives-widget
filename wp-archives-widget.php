@@ -91,12 +91,15 @@ class wp_archives_widget extends WP_Widget {
 		}
 		ul.wp-archives-widget-years li.wp-archives-widget-year {
 			list-style: none;
+			margin-bottom: 0px;
+			border: none none none none;
 		}
 		ul.wp-archives-widget-years li.wp-archives-widget-year ul {
 			list-style: disc;
 		}
 		.wp-archives-widget-years li {
-			border: none;
+			margin-bottom: 0px;
+			border: none none none none;
 		}
 		.wp-archives-widget-years .toggle {
 			cursor: pointer;
