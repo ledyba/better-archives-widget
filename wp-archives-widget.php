@@ -86,7 +86,7 @@ class wp_archives_widget extends WP_Widget {
 		?>
 		<style>
 		ul.wp-archives-widget-years {
-			list-style-type: none;
+			list-style: none;
 		}
 		.wp-archives-widget-years li {
 			border: none;
