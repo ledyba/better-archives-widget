@@ -88,6 +88,12 @@ class wp_archives_widget extends WP_Widget {
 		ul.wp-archives-widget-years {
 			list-style: none;
 		}
+		ul.wp-archives-widget-years li.wp-archives-widget-year {
+			list-style: none;
+		}
+		ul.wp-archives-widget-years li.wp-archives-widget-year ul {
+			list-style: disc;
+		}
 		.wp-archives-widget-years li {
 			border: none;
 		}
