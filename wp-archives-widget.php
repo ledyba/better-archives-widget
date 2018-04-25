@@ -105,7 +105,7 @@ class wp_archives_widget extends WP_Widget {
 				var list = it.querySelector('ul');
 				btn.addEventListener('click', function() {
 					if(list.classList.toggle('hidden')) {
-						btn.textContent='▶️';
+						btn.textContent='➡️';
 					}else{
 						btn.textContent='⬇️';
 					}
