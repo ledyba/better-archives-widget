@@ -85,19 +85,32 @@ class wp_archives_widget extends WP_Widget {
 		$join = apply_filters( 'getarchives_join', '' );
 		?>
 		<style>
-		.widget ul li.wp-archives-widget-year {
+		.widget .wp-archives-widget-years li {
 			border: none;
-			border-bottom: none;
 		}
-		.widget ul li.wp-archives-widget-month {
-			border: none;
-			border-bottom: none;
+		.widget ul.wp-archives-widget-months.hidden {
+			visibility: none;
+		}
+		.widget ul.wp-archives-widget-months {
+			visibility: block;
 		}
 		</style>
+		<script>
+		document.querySelectorAll('.widget ul li.wp-archives-widget-year > .toggle').forEach(function(it) {
+			var list = it.querySelector('ul');
+			it.addEventListener('click', function() {
+				if(list.classList.toggle('hidden')) {
+					it.textContent='▶︎';
+				}else{
+					it.textContent='▼';
+				}
+			});
+		});
+		</script>
 		<?php
 
 		if ( $months = $wpdb->get_results( "SELECT YEAR(post_date) AS year, MONTH(post_date) AS numMonth, DATE_FORMAT(post_date, '%Y/%m') AS date_string, count(ID) as post_count FROM $wpdb->posts $join $where GROUP BY YEAR(post_date), MONTH(post_date) ORDER BY post_date DESC" ) ) {
-			echo '<ul>';
+			echo '<ul class="wp-archives-widget-years">';
 			$postsInYear = array();
 			foreach ( $months as $month ) {
 				$postsInYear[$month->year] += $month->post_count;
@@ -110,8 +123,9 @@ class wp_archives_widget extends WP_Widget {
 				if ( $currentYear !== $prevYear ) {
 					?>
 					<li class="wp-archives-widget-year">
+					<span class="toggle">▶︎</span>
 					<a href="<?php echo esc_url( get_year_link( $month->year ) ); ?>"><?php echo esc_html( $month->year.'('.$postsInYear[$month->year].')' ); ?></a>
-					<ul class="wp-archives-widget-months">
+					<ul class="wp-archives-widget-months hidden">
 					<?php
 				} ?>
 				<li class="wp-archives-widget-month">
