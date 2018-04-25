@@ -96,14 +96,16 @@ class wp_archives_widget extends WP_Widget {
 		}
 		</style>
 		<script>
-		document.querySelectorAll('.widget ul li.wp-archives-widget-year > .toggle').forEach(function(it) {
-			var list = it.querySelector('ul');
-			it.addEventListener('click', function() {
-				if(list.classList.toggle('hidden')) {
-					it.textContent='▶︎';
-				}else{
-					it.textContent='▼';
-				}
+		document.addEventListener("DOMContentLoaded", function(event) {
+			document.querySelectorAll('.widget ul li.wp-archives-widget-year > .toggle').forEach(function(it) {
+				var list = it.querySelector('ul');
+				it.addEventListener('click', function() {
+					if(list.classList.toggle('hidden')) {
+						it.textContent='▶︎';
+					}else{
+						it.textContent='▼';
+					}
+				});
 			});
 		});
 		</script>
